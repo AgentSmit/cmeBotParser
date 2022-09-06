@@ -1,0 +1,9 @@
+python
+selenium
+pyqt5
+peewee
+python-dotenv
+lxml
+bs4
+requests
+pytz
