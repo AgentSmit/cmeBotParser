@@ -1,4 +1,3 @@
-python
 selenium
 pyqt5
 peewee

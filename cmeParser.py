@@ -76,13 +76,11 @@ class CmeParser:
     def runBrowser(self):
         #Setup browser
         driverPath:string = os.curdir
-        match(self.config['WebBrowserType']):
-            case 'edge':
+        if self.config['WebBrowserType'] == 'edge':
                 driverPath += f"\\{self.config['EdgeDriver']}"
                 self.driverOptions = webdriver.EdgeOptions()
                 self.driver = webdriver.Edge(executable_path=driverPath)
-                
-            case 'chrome':
+        if self.config['WebBrowserType'] == 'chrome':
                 self.driverOptions = webdriver.ChromeOptions()
                 driverPath +=f"\\{self.config['ChromeDriver']}"
                 self.driver = webdriver.Chrome(executable_path=driverPath)
@@ -188,10 +186,9 @@ class CmeParser:
                         print(f"Parse Error: {tradeInfo}")
                         continue
                     tradeType = 0
-                    match tradeInfo.split(' ')[2]:
-                        case 'C':
+                    if tradeInfo.split(' ')[2] == 'C':
                             tradeType = 1
-                        case 'P':
+                    if tradeInfo.split(' ')[2] == 'P':
                             tradeType = -1
                     
                     price = tds[5].text.strip()
@@ -344,7 +341,6 @@ class PostCodes:
 
 def benchmark(func):
     import time
-
     def wrapper():
         start = time.time()*1000
         return_val = func()

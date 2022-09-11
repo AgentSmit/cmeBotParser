@@ -1,1 +1,5 @@
 msedgedriver.exe
+chromedriver.exe
+env
+__pycache__
+settings
